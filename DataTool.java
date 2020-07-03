@@ -11,8 +11,6 @@ public abstract class DataTool {
 			i++;
 		}
 		double ratio = (x - range[i - 1]) / (range[i] - range[i - 1]);
-		double value1 = data[i];
-		double value2 = data[i - 1];
 		return (data[i] - data[i - 1]) * ratio + data[i - 1];
 	}
 	
@@ -20,7 +18,7 @@ public abstract class DataTool {
 		double result;
 		int i = 0;
 		boolean exit = false;
-		while(i <= rangeY.length - 1 && exit == false) {
+		while(i < rangeY.length - 1 && exit == false) {
 			if (y <= rangeY[i + 1]) {
 				exit = true;
 			}
@@ -50,5 +48,14 @@ public abstract class DataTool {
 		zmax = interpolate2D(rangeX, x, rangeY, y, matrix[i]);
 		result = (zmax - zmin) * ratio + zmin;
 		return result;
+	}
+	
+	public static void main(String[] args) {
+		double[] range1 = {1., 3., 5.};
+		double[] range2 = {0., 10., 20.};
+		double[][] data = {{12., 14., 16.},
+				{9., 11., 13.},
+				{4., 5., 6.}};
+ 		System.out.println(interpolate2D(range1, 5.758, range2, -1., data)); 
 	}
 }
