@@ -37,13 +37,13 @@ public abstract class DataTool {
 		int i = 0;
 		boolean exit = false;
 		while(i < rangeZ.length  - 1 && exit == false) {
-			if(z < rangeZ[i + 1]) {
+			if(z <= rangeZ[i + 1]) {
 				exit = true;
 			}
 			i++;
 		}
 		double ratio, zmin, zmax;
-		ratio = (x - rangeX[i - 1]) / (rangeX[i] - rangeX[i - 1]);
+		ratio = (z - rangeZ[i - 1]) / (rangeZ[i] - rangeZ[i - 1]);
 		zmin = interpolate2D(rangeX, x, rangeY, y, matrix[i - 1]);
 		zmax = interpolate2D(rangeX, x, rangeY, y, matrix[i]);
 		result = (zmax - zmin) * ratio + zmin;
